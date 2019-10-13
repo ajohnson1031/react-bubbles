@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../data/axiosAuth";
 
 const Login = props => {
   // make a post request to retrieve a token from the api
@@ -17,35 +17,34 @@ const Login = props => {
       [e.target.name]: e.target.value,
       err: null
     });
+  };
 
-    console.log(
-      `username: ${loginCreds.username}, password: ${loginCreds.password}`
-    );
+  const login = () => {
+    axiosWithAuth()
+      .post(`http://localhost:5000/api/login`, {
+        username: loginCreds.username,
+        password: loginCreds.password
+      })
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/bubs");
+      })
+      .catch(err =>
+        setLoginCreds({
+          ...loginCreds,
+          err: "Error logging in. Please try again."
+        })
+      );
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-
     loginCreds.username === "" || loginCreds.password === ""
       ? setLoginCreds({
           ...loginCreds,
           err: "Please complete all login fields."
         })
-      : axios
-          .post(`http://localhost:5000/api/login`, {
-            username: loginCreds.username,
-            password: loginCreds.password
-          })
-          .then(res => {
-            localStorage.setItem("token", res.data.payload);
-            props.history.push("/bubs");
-          })
-          .catch(err =>
-            setLoginCreds({
-              ...loginCreds,
-              err: "Error logging in. Please try again."
-            })
-          );
+      : login();
   };
 
   return (
