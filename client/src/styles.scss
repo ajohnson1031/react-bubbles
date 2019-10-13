@@ -31,7 +31,8 @@ body,
 }
 
 .colors-wrap {
-  height: 100%;
+  height: fit-content;
+  padding-bottom: 40px;
   width: 300px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
@@ -82,6 +83,16 @@ form {
   input {
     width: 100px;
   }
+
+  .error-container {
+    width: calc(100% - 60px);
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: lighten(lightpink, 8%);
+    border: 2px solid darken(lightpink, 30%);
+    color: darken(lightpink, 40%);
+  }
 }
 
 .button-row {
@@ -95,5 +106,54 @@ form {
     color: white;
     padding: 3px 8px;
     margin-top: 16px;
+  }
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+
+  form {
+    margin: 30px;
+    min-width: 240px;
+    padding: 30px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h4 {
+      margin: 0 0 30px;
+    }
+
+    input {
+      width: calc(100% - 60px);
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    button {
+      width: 60%;
+      padding: 10px 0;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: dodgerblue;
+      border: none;
+      color: #fff;
+      outline: none;
+    }
+  }
+}
+
+form.addColor {
+  div.error-container {
+    width: 60%;
+    margin: 20px 0 0 40px;
   }
 }

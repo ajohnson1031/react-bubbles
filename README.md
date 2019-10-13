@@ -29,10 +29,15 @@ In this project you will create a login page and request a token from the server
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain what a token is used for.
+  > Tokens are used mainly to authenticate or validate a user's current level of access by relaying a hash (or randomized string) between the server and the client on calls to the server.
 - [ ] What steps can you take in your web apps to keep your data secure?
+  > 1.  Always randomize your tokens.
+  > 2.  Never store tokens locally (in files). If you need to store the tokens, use the localStorage.
+  > 3.  Use protected routes to protect sensitive data. Never allow access to privileged information without some level of authentication (client and server side).
 - [ ] Describe how web servers work.
+  > Web servers work by accessing data stores based on calls they receive. For instance, a call to "google.com' (inputting the google URL into the browser), will send an HTTP request through the browser to the servers hosting that Uniform Resource Locator. The server then authenticates the request, parsing through headers and any additional parameters in order to display information available at the access level the request was made from. The server then sends the requested information back in a response that the browser can then read, parse and display to the end user.
 - [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
-
+  > .post, .get, .put & .delete
 
 ## Project Set Up
 
@@ -53,9 +58,9 @@ Follow these steps to set up and work on your project:
 
 Follow these steps for completing your project:
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
+- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo).
 - [ ] Add your Project Manager as a Reviewer on the Pull-request
-- [ ] PM then will count the HW as done by  merging the branch back into master.
+- [ ] PM then will count the HW as done by merging the branch back into master.
 
 ## Minimum Viable Product
 
@@ -78,11 +83,11 @@ Build a login form to authenticate your users.
 
 ### API Documentation
 
-  * **[POST]** * to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambd4' }`
-  * **[GET]** to `/api/colors`: returns the list of colors and their hex codes.
-  * **[POST]** to `/api/colors`: creates a new color object. Pass the color as the `body` of the request (the second argument passed to `axios.post`).
-  * **[PUT]** to `/api/colors/:id`: updates the color using the `id` passed as part of the URL. Send the color object with the updated information as the `body` of the request (the second argument passed to `axios.put`).
-  * **[DELETE]** to `/api/colors/123`: removes the color using the `id` passed as part of the URL (123 in example).
+- **[POST]** \* to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambd4' }`
+- **[GET]** to `/api/colors`: returns the list of colors and their hex codes.
+- **[POST]** to `/api/colors`: creates a new color object. Pass the color as the `body` of the request (the second argument passed to `axios.post`).
+- **[PUT]** to `/api/colors/:id`: updates the color using the `id` passed as part of the URL. Send the color object with the updated information as the `body` of the request (the second argument passed to `axios.put`).
+- **[DELETE]** to `/api/colors/123`: removes the color using the `id` passed as part of the URL (123 in example).
 
 ## STRETCH PROBLEMS
 
