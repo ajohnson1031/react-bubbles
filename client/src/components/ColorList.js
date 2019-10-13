@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import AddColor from "./AddColor";
 import { axiosWithAuth } from "../data/axiosAuth";
 
 const initialColor = {
@@ -102,8 +102,10 @@ const ColorList = ({ colors, updateColors }) => {
           </div>
         </form>
       )}
-      <div className="spacer" />
+
       {/* stretch - build another form here to add a color */}
+      <AddColor updateColors={updateColors} />
+      <div className="spacer"></div>
     </div>
   );
 };
